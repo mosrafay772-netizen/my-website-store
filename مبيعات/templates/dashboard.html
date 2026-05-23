@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>لوحة التحكم</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>لوحة إدارة المخزن</h1>
+
+<a href="/logout">تسجيل خروج</a>
+
+<div class="container">
+
+<div class="card">
+<h2>إضافة منتج</h2>
+
+<form method="POST" action="/add_product">
+<input type="text" name="name" placeholder="اسم المنتج" required>
+<input type="number" name="quantity" placeholder="الكمية" required>
+<input type="number" step="0.1" name="price" placeholder="السعر" required>
+<button type="submit">إضافة</button>
+</form>
+
+</div>
+
+<div class="card">
+<h2>بيع منتج</h2>
+
+<form method="POST" action="/sell">
+
+<select name="product_id">
+{% for product in products %}
+<option value="{{product.id}}">
+{{product.name}}
+</option>
+{% endfor %}
+</select>
+
+<input type="number" name="quantity" placeholder="الكمية" required>
+
+<button type="submit">بيع</button>
+
+</form>
+
+</div>
+
+<div class="card">
+<h2>الإحصائيات</h2>
+
+<p>عدد المنتجات: {{products|length}}</p>
+<p>إجمالي المبيعات: {{total_sales}} جنيه</p>
+
+</div>
+
+</div>
+
+<div class="table-box">
+
+<h2>المنتجات</h2>
+
+<table>
+<tr>
+<th>الاسم</th>
+<th>الكمية</th>
+<th>السعر</th>
+<th>حذف</th>
+</tr>
+
+{% for product in products %}
+<tr>
+<td>{{product.name}}</td>
+<td>{{product.quantity}}</td>
+<td>{{product.price}}</td>
+<td>
+<a href="/delete/{{product.id}}">حذف</a>
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+<div class="table-box">
+
+<h2>المبيعات</h2>
+
+<table>
+<tr>
+<th>المنتج</th>
+<th>الكمية</th>
+<th>الإجمالي</th>
+</tr>
+
+{% for sale in sales %}
+<tr>
+<td>{{sale.product_name}}</td>
+<td>{{sale.quantity}}</td>
+<td>{{sale.total}}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>
