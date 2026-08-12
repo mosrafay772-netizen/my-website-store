@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#086bc7">
+<title>KARNAK | Smart Virtual Showroom</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand-logo" href="#home"><img src="assets/karnak-logo.png" alt="Karnak"><span><b>KARNAK</b><small>SMART VIRTUAL SHOWROOM</small></span></a>
+  <nav>
+    <a href="#cars">السيارات</a><a href="#brands">العلامات</a><a href="#compare">المقارنة</a>
+  </nav>
+  <div class="top-actions">
+    <button class="btn ghost" id="langBtn">EN</button>
+    <button class="btn dark" id="nourBtn">نور ✦</button>
+    <button class="btn admin" id="adminBtn">لوحة الإدارة</button>
+  </div>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">KARNAK SMART AUTOMOTIVE EXPERIENCE</span>
+    <h1>كل موديل<br><em>له تجربته.</em></h1>
+    <p>اختار العلامة، وبعدها اختار الموديل من التابات. كل موديل له صفحة عرض، مواصفات، سعر، مقارنة، حجز تجربة و360° لو الإدارة رفعت الفريمات.</p>
+    <div class="hero-actions"><a class="btn primary" href="#cars">ادخل المعرض</a><button class="btn light" id="finderBtn">نور تختارلي ✨</button></div>
+    <div class="brand-strip"><span>NISSAN</span><span>JETOUR</span><span>MITSUBISHI</span></div>
+  </div>
+  <div class="hero-art"><div class="rank-badge"><strong>رقم واحد</strong><span>في الصعيد</span><small>KARNAK</small></div><div class="hero-card"><b>MODEL TABS</b><span>كل موديل في مكانه</span><i>↔</i></div></div>
+</section>
+
+<section id="brands" class="section">
+  <div class="section-head"><div><span class="eyebrow">BRANDS</span><h2>اختار العلامة</h2></div><p>التابات والموديلات بتتكوّن تلقائيًا من بيانات الإدارة.</p></div>
+  <div id="brandsGrid" class="brands"></div>
+</section>
+
+<section id="cars" class="section">
+  <div class="section-head"><div><span class="eyebrow">MODEL SHOWROOM</span><h2>موديلات كل علامة</h2><p>اختار موديل من التاب وشوف تفاصيله من غير ما تعمل Reload.</p></div>
+    <div class="filters"><input id="search" placeholder="ابحث عن موديل..."><select id="brandFilter"><option value="">كل العلامات</option></select></div>
+  </div>
+  <div id="modelTabs" class="model-tabs"></div>
+  <div id="carsGrid" class="cars-grid"></div>
+</section>
+
+<section id="compare" class="section compare">
+  <div class="section-head"><div><span class="eyebrow">SMART COMPARISON</span><h2>قارن قبل ما تقرر</h2></div></div>
+  <div class="compare-pick"><select id="cmpA"></select><b>VS</b><select id="cmpB"></select><button class="btn primary" id="compareBtn">قارن الآن</button></div>
+  <div id="cmpResult"></div>
+</section>
+
+
+</main>
+
+<div id="modal" class="modal"></div>
+
+<aside id="nour" class="drawer">
+  <div class="drawer-head"><div class="nour-avatar">ن</div><div><b>نور</b><small>مساعدة كرنك — بتتكلم مصري</small></div><button id="closeNour">×</button></div>
+  <div id="chat" class="chat"><div class="msg bot">أهلاً بيك 🌷 نورت كرنك. أنا نور. قولي بتدور على عربية لإيه، وأنا هبص على العربيات الموجودة دلوقتي وأرشح لك من المعروض فعلًا.</div></div>
+  <div class="quick"><button data-nour="عايز عربية عائلية">عائلية</button><button data-nour="عايز عربية للمدينة">مدينة</button><button data-nour="عايز أقارن عربيتين">مقارنة</button><button data-nour="عايز أعرف الأسعار">الأسعار</button><button id="speechToggle">🔊 نور بتتكلم</button></div>
+  <div class="chatbar"><input id="chatInput" placeholder="اكتبلي براحتك..."><button id="sendNour">➤</button></div>
+</aside>
+<div id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
